@@ -1,0 +1,209 @@
+@import "tailwindcss";
+
+@theme {
+  --color-ink: #0e1210;
+  --color-ink-2: #151a16;
+  --color-concrete: #2a2e28;
+  --color-concrete-2: #3a4038;
+  --color-moss: #7c8a5a;
+  --color-moss-dim: #4f5a3a;
+  --color-rust: #b4442a;
+  --color-rust-bright: #d9613f;
+  --color-bone: #e8e2d3;
+  --color-neutral-warm: #8c8a7e;
+  --font-display: "Oswald", "Arial Narrow", sans-serif;
+  --font-serif: "Spectral", Georgia, serif;
+}
+
+html,
+body,
+#root {
+  height: 100%;
+}
+
+body {
+  margin: 0;
+  background: #0e1210;
+  color: #e8e2d3;
+  font-family: var(--font-display);
+  overflow: hidden;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+  /* телефон: никакого зума, выделения и «резинки» при свайпе */
+  touch-action: none;
+  overscroll-behavior: none;
+  -webkit-user-select: none;
+  user-select: none;
+  -webkit-tap-highlight-color: transparent;
+  -webkit-touch-callout: none;
+}
+
+canvas {
+  touch-action: none;
+}
+
+::selection {
+  background: #b4442a;
+  color: #e8e2d3;
+}
+
+/* ——— typographic voice ——— */
+.stamped {
+  font-family: var(--font-display);
+  text-transform: uppercase;
+  letter-spacing: 0.22em;
+  font-weight: 500;
+}
+.stamped-thin {
+  font-family: var(--font-display);
+  text-transform: uppercase;
+  letter-spacing: 0.34em;
+  font-weight: 300;
+}
+.voice {
+  font-family: var(--font-serif);
+  font-style: italic;
+}
+.tabular {
+  font-variant-numeric: tabular-nums;
+  font-feature-settings: "tnum";
+}
+
+/* ——— enamel sign frame (1970s civil-defense reference) ——— */
+.enamel {
+  box-shadow:
+    inset 0 0 0 1px rgba(232, 226, 211, 0.22),
+    inset 0 0 0 5px rgba(14, 18, 16, 0.9),
+    inset 0 0 0 6px rgba(232, 226, 211, 0.1);
+}
+.enamel-rust {
+  box-shadow:
+    inset 0 0 0 1px rgba(180, 68, 42, 0.55),
+    inset 0 0 0 4px rgba(14, 18, 16, 0.85),
+    inset 0 0 0 5px rgba(180, 68, 42, 0.28);
+}
+
+/* ——— film grain + vignette overlays ——— */
+.grain::after {
+  content: "";
+  position: absolute;
+  inset: -50%;
+  pointer-events: none;
+  opacity: 0.14;
+  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='140' height='140'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='3'/></filter><rect width='140' height='140' filter='url(%23n)' opacity='0.6'/></svg>");
+  animation: grain-shift 0.7s steps(3) infinite;
+}
+@keyframes grain-shift {
+  0% {
+    transform: translate(0, 0);
+  }
+  33% {
+    transform: translate(-3%, 2%);
+  }
+  66% {
+    transform: translate(2%, -3%);
+  }
+  100% {
+    transform: translate(0, 0);
+  }
+}
+.vignette::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background: radial-gradient(ellipse at 50% 45%, rgba(0, 0, 0, 0) 35%, rgba(0, 0, 0, 0.75) 100%);
+}
+
+/* ——— scrollbars ——— */
+.thin-scroll::-webkit-scrollbar {
+  width: 6px;
+}
+.thin-scroll::-webkit-scrollbar-track {
+  background: rgba(232, 226, 211, 0.05);
+}
+.thin-scroll::-webkit-scrollbar-thumb {
+  background: rgba(124, 138, 90, 0.6);
+}
+
+/* ——— animations ——— */
+@keyframes fade-up {
+  from {
+    opacity: 0;
+    transform: translateY(14px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+.fade-up {
+  animation: fade-up 0.7s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+@keyframes pulse-ring {
+  0% {
+    opacity: 0.85;
+    transform: scale(0.2);
+  }
+  100% {
+    opacity: 0;
+    transform: scale(1);
+  }
+}
+.echo-ring {
+  animation: pulse-ring 2.4s cubic-bezier(0.2, 0.6, 0.3, 1) infinite;
+}
+@keyframes flicker {
+  0%,
+  100% {
+    opacity: 1;
+  }
+  42% {
+    opacity: 0.72;
+  }
+  46% {
+    opacity: 1;
+  }
+  60% {
+    opacity: 0.85;
+  }
+}
+.flicker {
+  animation: flicker 5.5s ease-in-out infinite;
+}
+@keyframes breathe {
+  0%,
+  100% {
+    transform: scale(1);
+    opacity: 0.55;
+  }
+  50% {
+    transform: scale(1.06);
+    opacity: 0.85;
+  }
+}
+.breathe {
+  animation: breathe 4.2s ease-in-out infinite;
+}
+@keyframes scan {
+  0% {
+    transform: translateY(-100%);
+  }
+  100% {
+    transform: translateY(100%);
+  }
+}
+.scanline {
+  animation: scan 6s linear infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .grain::after,
+  .flicker,
+  .breathe,
+  .scanline,
+  .echo-ring,
+  .fade-up {
+    animation: none !important;
+  }
+}
