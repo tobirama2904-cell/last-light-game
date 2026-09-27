@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Знак LAST LIGHT: мотылёк в разорванном кольце -->
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="108dp"
+    android:height="108dp"
+    android:viewportWidth="120"
+    android:viewportHeight="120">
+
+    <group android:translateX="0" android:translateY="0">
+        <!-- разорванное кольцо -->
+        <path
+            android:pathData="M60,7 A53,53 0 0 1 113,60"
+            android:strokeColor="#B4442A"
+            android:strokeWidth="3"
+            android:fillColor="#00000000" />
+        <path
+            android:pathData="M110,78 A53,53 0 0 1 60,113"
+            android:strokeColor="#B4442A"
+            android:strokeWidth="3"
+            android:fillColor="#00000000" />
+        <path
+            android:pathData="M44,110 A53,53 0 0 1 7,60"
+            android:strokeColor="#B4442A"
+            android:strokeWidth="3"
+            android:fillColor="#00000000" />
+        <path
+            android:pathData="M10,42 A53,53 0 0 1 42,10"
+            android:strokeColor="#B4442A"
+            android:strokeWidth="3"
+            android:fillColor="#00000000" />
+
+        <!-- крылья -->
+        <path
+            android:pathData="M57,55 C46,40 26,33 15,41 C4,49 6,68 18,78 C29,87 46,85 56,76 Z"
+            android:fillColor="#B4442A"
+            android:fillAlpha="0.92" />
+        <path
+            android:pathData="M63,55 C74,40 94,33 105,41 C116,49 114,68 102,78 C91,87 74,85 64,76 Z"
+            android:fillColor="#B4442A"
+            android:fillAlpha="0.92" />
+        <path
+            android:pathData="M57,74 C48,76 34,82 28,93 C23,102 30,110 40,108 C50,106 56,94 58,84 Z"
+            android:fillColor="#B4442A"
+            android:fillAlpha="0.62" />
+        <path
+            android:pathData="M63,74 C72,76 86,82 92,93 C97,102 90,110 80,108 C70,106 64,94 62,84 Z"
+            android:fillColor="#B4442A"
+            android:fillAlpha="0.62" />
+
+        <!-- тело, голова, усики -->
+        <path
+            android:pathData="M60,51 m-5,0 a5,19 0 1,0 10,0 a5,19 0 1,0 -10,0"
+            android:fillColor="#B4442A" />
+        <path
+            android:pathData="M60,49 m-6.4,0 a6.4,6.4 0 1,0 12.8,0 a6.4,6.4 0 1,0 -12.8,0"
+            android:fillColor="#B4442A" />
+        <path
+            android:pathData="M57,45 C50,36 43,32 36,31"
+            android:strokeColor="#B4442A"
+            android:strokeWidth="2.6"
+            android:strokeLineCap="round"
+            android:fillColor="#00000000" />
+        <path
+            android:pathData="M63,45 C70,36 77,32 84,31"
+            android:strokeColor="#B4442A"
+            android:strokeWidth="2.6"
+            android:strokeLineCap="round"
+            android:fillColor="#00000000" />
+
+        <!-- луч света -->
+        <path
+            android:pathData="M60,90 L60,106"
+            android:strokeColor="#E8E2D3"
+            android:strokeWidth="2.4"
+            android:fillColor="#00000000" />
+    </group>
+</vector>

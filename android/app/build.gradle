@@ -1,0 +1,47 @@
+plugins {
+    id 'com.android.application'
+}
+
+android {
+    namespace 'com.cordeps.lastlight'
+    compileSdk 34
+
+    defaultConfig {
+        applicationId "com.cordeps.lastlight"
+        minSdk 26
+        targetSdk 34
+        versionCode 1
+        versionName "1.0"
+    }
+
+    buildTypes {
+        debug {
+            // отладочная подпись — APK ставится на телефон сразу
+            minifyEnabled false
+        }
+        release {
+            minifyEnabled false
+            // подписывается отладочным ключом, чтобы CI отдавал ставящийся файл
+            signingConfig signingConfigs.debug
+        }
+    }
+
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_17
+        targetCompatibility JavaVersion.VERSION_17
+    }
+
+    packagingOptions {
+        // index.html уже сжат в APK-контейнере, второй раз не нужно
+        jniLibs.useLegacyPackaging false
+    }
+
+    androidResources {
+        // не пережимать ассет игры
+        noCompress 'html'
+    }
+}
+
+dependencies {
+    // зависимостей нет: чистый Activity + WebView, APK остаётся лёгким
+}
